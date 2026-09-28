@@ -31,6 +31,10 @@ jobs:
           python -m py_compile src/*.py
           python -m py_compile app/app.py
 
+      - name: Run automated tests
+        run: |
+          python -m unittest discover -s tests -p "test_*.py" -v
+
       - name: Verify project files
         run: |
           test -f README.md
@@ -41,4 +45,3 @@ jobs:
 
       - name: Project check completed
         run: echo "✅ AI Cyber Threat Detection project passed the basic checks."
-        
