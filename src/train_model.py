@@ -1,49 +1,60 @@
+import os
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
-from sklearn.preprocessing import LabelEncoder
+
+from model_utils import build_threat_model
 
 
-def train_threat_model(data, target_column):
-    """Train a Random Forest model for cyber threat classification."""
+DATA_PATH = "data/sample_network_traffic.csv"
 
-    data = data.copy()
 
-    # Convert text columns into numbers
-    for column in data.select_dtypes(include=["object"]).columns:
-        encoder = LabelEncoder()
-        data[column] = encoder.fit_transform(data[column].astype(str))
+def train_model():
+    """Train and evaluate the cyber threat detection model."""
 
-    X = data.drop(columns=[target_column])
-    y = data[target_column]
+    data = pd.read_csv(DATA_PATH)
+
+    X = data.drop(columns=["label"])
+    y = data["label"]
 
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
-        test_size=0.2,
+        test_size=0.25,
         random_state=42,
         stratify=y
     )
 
-    model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42
-    )
+    model = build_threat_model()
 
     model.fit(X_train, y_train)
 
     predictions = model.predict(X_test)
 
-    accuracy = accuracy_score(y_test, predictions)
+    accuracy = accuracy_score(
+        y_test,
+        predictions
+    )
 
-    print(f"Model Accuracy: {accuracy:.4f}")
+    print(f"Model Accuracy: {accuracy:.2%}")
+
     print("\nClassification Report:")
-    print(classification_report(y_test, predictions))
+    print(
+        classification_report(
+            y_test,
+            predictions,
+            zero_division=0
+        )
+    )
 
     return model
 
 
 if __name__ == "__main__":
-    print("Cyber Threat Detection - Model Training")
+    print("🛡️ AI Cyber Threat Detection")
+    print("Training model...")
+
+    trained_model = train_model()
+
+    print("\n✅ Model training completed successfully.")
