@@ -5,7 +5,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+
+from src.threat_analyzer import analyze_threat
 
 
 st.set_page_config(
@@ -98,7 +99,7 @@ model, training_data = train_model()
 # DASHBOARD METRICS
 # --------------------------------------------------
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric(
@@ -116,6 +117,12 @@ with col3:
     st.metric(
         "Threat Classes",
         training_data["label"].nunique()
+    )
+
+with col4:
+    st.metric(
+        "AI Model",
+        "RANDOM FOREST"
     )
 
 
@@ -187,21 +194,22 @@ if uploaded_file is not None:
                 use_container_width=True
             )
 
-            predictions = model.predict(data)
-
-            data["predicted_threat"] = predictions
+            results = analyze_threat(
+                model,
+                data
+            )
 
             st.subheader("🚨 Threat Analysis")
 
             st.dataframe(
-                data,
+                results,
                 use_container_width=True
             )
 
             st.subheader("📈 Detection Summary")
 
             prediction_counts = (
-                pd.Series(predictions)
+                results["predicted_threat"]
                 .value_counts()
             )
 
@@ -209,8 +217,19 @@ if uploaded_file is not None:
                 prediction_counts
             )
 
+            st.subheader("⚠️ Severity Summary")
+
+            severity_counts = (
+                results["severity"]
+                .value_counts()
+            )
+
+            st.bar_chart(
+                severity_counts
+            )
+
             st.success(
-                f"Analyzed {len(data)} network connections."
+                f"Analyzed {len(results)} network connections."
             )
 
     except Exception as error:
