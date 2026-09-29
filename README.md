@@ -20,6 +20,19 @@ The project is designed as an end-to-end cybersecurity and data science applicat
 * 📈 Model performance evaluation
 * 🖥️ Interactive threat monitoring dashboard
 
+## ✨ Key Features
+
+- 🤖 Machine Learning Threat Classification
+- 🔍 Network Traffic Analysis
+- 🚨 Automated Security Alerts
+- ⚠️ Threat Severity Detection
+- 📊 Interactive Threat Visualization
+- 📁 CSV Network Traffic Upload
+- 🧪 Automated Model Testing
+- 🔄 GitHub Actions CI Pipeline
+- 🖥️ Streamlit Cybersecurity Dashboard
+- 🧠 Model Documentation with Model Card
+
 ## 🎯 Objectives
 
 * Detect suspicious network activity automatically
