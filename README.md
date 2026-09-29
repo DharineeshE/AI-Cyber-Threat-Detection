@@ -129,27 +129,50 @@ The Streamlit dashboard is designed to provide:
 ```text
 AI-Cyber-Threat-Detection/
 │
+├── .github/
+│   └── workflows/
+│       └── python-check.yml
+│
+├── .streamlit/
+│   └── config.toml
+│
+├── app/
+│   └── app.py
+│
 ├── data/
-│   └── dataset.csv
+│   ├── README.md
+│   ├── sample_network_traffic.csv
+│   └── test_network_traffic.csv
+│
+├── docs/
+│   └── architecture.md
+│
+├── models/
 │
 ├── notebooks/
 │   └── cyber_threat_detection.ipynb
 │
 ├── src/
-│   ├── preprocessing.py
+│   ├── __init__.py
+│   ├── alerts.py
+│   ├── evaluate_model.py
 │   ├── feature_engineering.py
-│   ├── train_model.py
-│   └── predict.py
+│   ├── model_utils.py
+│   ├── predict.py
+│   ├── preprocessing.py
+│   ├── save_model.py
+│   ├── threat_analyzer.py
+│   └── train_model.py
 │
-├── models/
-│   └── threat_detection_model.pkl
+├── tests/
+│   └── test_model.py
 │
-├── app/
-│   └── app.py
-│
-├── requirements.txt
+├── .gitignore
+├── LICENSE
+├── MODEL_CARD.md
 ├── README.md
-└── .gitignore
+├── SECURITY.md
+└── requirements.txt
 ```
 
 ## ⚙️ Installation
