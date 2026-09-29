@@ -7,6 +7,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 
 from src.threat_analyzer import analyze_threat
+from src.alerts import generate_alert, get_recommended_action
 
 
 st.set_page_config(
@@ -17,7 +18,7 @@ st.set_page_config(
 
 
 # --------------------------------------------------
-# PAGE HEADER
+# HEADER
 # --------------------------------------------------
 
 st.title("🛡️ AI Cyber Threat Detection System")
@@ -30,7 +31,7 @@ st.divider()
 
 
 # --------------------------------------------------
-# LOAD TRAINING DATA
+# TRAIN MODEL
 # --------------------------------------------------
 
 @st.cache_resource
@@ -102,16 +103,10 @@ model, training_data = train_model()
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric(
-        "System Status",
-        "ONLINE"
-    )
+    st.metric("System Status", "ONLINE")
 
 with col2:
-    st.metric(
-        "Training Records",
-        len(training_data)
-    )
+    st.metric("Training Records", len(training_data))
 
 with col3:
     st.metric(
@@ -120,10 +115,7 @@ with col3:
     )
 
 with col4:
-    st.metric(
-        "AI Model",
-        "RANDOM FOREST"
-    )
+    st.metric("AI Model", "RANDOM FOREST")
 
 
 st.divider()
@@ -194,6 +186,7 @@ if uploaded_file is not None:
                 use_container_width=True
             )
 
+            # Analyze threats
             results = analyze_threat(
                 model,
                 data
@@ -206,6 +199,7 @@ if uploaded_file is not None:
                 use_container_width=True
             )
 
+            # Detection summary
             st.subheader("📈 Detection Summary")
 
             prediction_counts = (
@@ -213,10 +207,9 @@ if uploaded_file is not None:
                 .value_counts()
             )
 
-            st.bar_chart(
-                prediction_counts
-            )
+            st.bar_chart(prediction_counts)
 
+            # Severity summary
             st.subheader("⚠️ Severity Summary")
 
             severity_counts = (
@@ -224,9 +217,40 @@ if uploaded_file is not None:
                 .value_counts()
             )
 
-            st.bar_chart(
-                severity_counts
-            )
+            st.bar_chart(severity_counts)
+
+            # Security alerts
+            st.subheader("🚨 Security Alerts")
+
+            for _, row in results.iterrows():
+
+                threat_type = row["predicted_threat"]
+                severity = row["severity"]
+
+                alert = generate_alert(
+                    severity,
+                    threat_type
+                )
+
+                action = get_recommended_action(
+                    severity
+                )
+
+                if severity == "CRITICAL":
+                    st.error(alert)
+                    st.write("Recommended action:", action)
+
+                elif severity == "HIGH":
+                    st.warning(alert)
+                    st.write("Recommended action:", action)
+
+                elif severity == "MEDIUM":
+                    st.info(alert)
+                    st.write("Recommended action:", action)
+
+                else:
+                    st.success(alert)
+                    st.write("Recommended action:", action)
 
             st.success(
                 f"Analyzed {len(results)} network connections."
@@ -237,7 +261,6 @@ if uploaded_file is not None:
         st.error(
             f"Unable to analyze the file: {error}"
         )
-
 
 else:
 
