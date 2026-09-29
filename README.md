@@ -4,11 +4,34 @@
 
 An AI-powered cybersecurity project that uses machine learning to analyze network traffic and classify predefined cyber-threat categories.
 
+## 🖥️ Application Preview
+
+> The Streamlit dashboard provides an interactive interface for analyzing network traffic and identifying potential cyber threats.
+
+![AI Cyber Threat Detection Dashboard](https://via.placeholder.com/1200x650?text=AI+Cyber+Threat+Detection+Dashboard)
+
 ## 🚀 Overview
 
 The **AI Cyber Threat Detection System** demonstrates an end-to-end machine learning workflow for cybersecurity analysis.
 
 The project includes data preprocessing, feature engineering, machine learning classification, threat analysis, severity mapping, security alerts, automated tests, GitHub Actions, and an interactive Streamlit dashboard.
+
+## 📌 Project Status
+
+| Component | Status |
+|---|---|
+| Data Processing | ✅ Complete |
+| Feature Engineering | ✅ Complete |
+| ML Model | ✅ Complete |
+| Threat Classification | ✅ Complete |
+| Severity Analysis | ✅ Complete |
+| Security Alerts | ✅ Complete |
+| Streamlit Dashboard | ✅ Complete |
+| Automated Tests | ✅ Complete |
+| GitHub Actions CI | ✅ Complete |
+| Model Documentation | ✅ Complete |
+| Real-World Dataset | 🔄 Planned |
+| Real-Time Monitoring | 🔄 Planned |
 
 ## ✨ Key Features
 
@@ -70,22 +93,6 @@ Security Alerts
 Streamlit Dashboard
 ```
 
-## 📌 Project Status
-
-| Component                 | Status     |
-| ------------------------- | ---------- |
-| Data Processing           | ✅ Complete |
-| Feature Engineering       | ✅ Complete |
-| ML Model                  | ✅ Complete |
-| Threat Classification     | ✅ Complete |
-| Severity Analysis         | ✅ Complete |
-| Security Alerts           | ✅ Complete |
-| Streamlit Dashboard       | ✅ Complete |
-| Automated Tests           | ✅ Complete |
-| GitHub Actions CI         | ✅ Complete |
-| Model Documentation       | ✅ Complete |
-| Larger Real-World Dataset | 🔄 Planned |
-| Real-Time Monitoring      | 🔄 Planned |
 
 ## 🖥️ Application Preview
 
@@ -139,7 +146,6 @@ AI-Cyber-Threat-Detection/
 │   └── architecture.md
 │
 ├── models/
-│   └── .gitkeep
 │
 ├── notebooks/
 │   └── cyber_threat_detection.ipynb
@@ -157,7 +163,6 @@ AI-Cyber-Threat-Detection/
 │   └── train_model.py
 │
 ├── tests/
-│   ├── .gitkeep
 │   └── test_model.py
 │
 ├── .gitignore
