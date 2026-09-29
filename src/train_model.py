@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 
-from model_utils import build_threat_model
+from src.model_utils import build_threat_model
 
 
 DATA_PATH = "data/sample_network_traffic.csv"
