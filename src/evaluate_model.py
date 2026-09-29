@@ -10,7 +10,7 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
-from model_utils import build_threat_model
+from src.model_utils import build_threat_model
 
 
 DATA_PATH = "data/sample_network_traffic.csv"
