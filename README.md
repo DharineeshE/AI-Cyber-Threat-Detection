@@ -1,3 +1,4 @@
+[![Python Project Check](https://github.com/DharineeshE/AI-Cyber-Threat-Detection/actions/workflows/python-check.yml/badge.svg)](https://github.com/DharineeshE/AI-Cyber-Threat-Detection/actions/workflows/python-check.yml)
 # 🛡️ AI Cyber Threat Detection System
 
 An AI-powered cybersecurity system that uses machine learning to detect and classify suspicious network activity and potential cyber threats.
