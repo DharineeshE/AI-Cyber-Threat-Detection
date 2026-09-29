@@ -1,0 +1,9 @@
+duration,protocol,service,src_bytes,dst_bytes,failed_logins,connection_count
+10,tcp,http,200,5000,0,5
+3,tcp,http,6500,100,9,55
+45,tcp,unknown,80,20,0,82
+28,tcp,ssh,950,250,6,21
+15,tcp,https,300,7000,0,6
+2,udp,dns,7000,90,8,50
+50,tcp,unknown,100,25,0,90
+30,tcp,ftp,880,230,7,23
