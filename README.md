@@ -3,6 +3,11 @@
 
 An AI-powered cybersecurity system that uses machine learning to detect and classify suspicious network activity and potential cyber threats.
 
+## 🖥️ Application Preview
+
+> The Streamlit dashboard provides an interactive interface for analyzing network traffic and identifying potential cyber threats.
+
+![AI Cyber Threat Detection Dashboard](https://via.placeholder.com/1200x650?text=AI+Cyber+Threat+Detection+Dashboard)
 ## 🚀 Overview
 
 The **AI Cyber Threat Detection System** analyzes network traffic data and applies machine learning techniques to identify abnormal or potentially malicious activity.
